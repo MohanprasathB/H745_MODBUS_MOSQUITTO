@@ -543,11 +543,13 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN 5 */
 
 	  /* Infinite loop */
-	  for(;;){
-		  run_mongoose();
-		  glue_init_1();
-		  osDelay(1);
-		  }
+	  for(;;) {
+		             run_mongoose();
+		             glue_init_1();
+		             osDelay(1);
+		         }
+
+
 	  }
   /* USER CODE END 5 */
 
@@ -565,6 +567,9 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
+	  if (g_mqtt_conn != NULL) {
+
+	     }
     osDelay(1);
   }
   /* USER CODE END StartTask02 */
