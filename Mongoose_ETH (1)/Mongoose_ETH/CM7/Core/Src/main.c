@@ -27,7 +27,7 @@
 #include "mongoose_glue.h"
 #include "stm32h7xx_hal.h"
 #include "stm32h7xx_hal_flash.h"
-#include <stdio.h>
+#include "stdio.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "stdio.h"
@@ -259,8 +259,7 @@ HSEM notification */
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  sprintf(value,"hello world \n\r");
-//	 	  HAL_UART_Transmit(&huart3, value, strlen(value), 1000);
+
   }
   /* USER CODE END 3 */
 }
@@ -543,14 +542,12 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN 5 */
 
 	  /* Infinite loop */
-	  for(;;) {
-		             run_mongoose();
-		             glue_init_1();
-		             osDelay(1);
-		         }
-
-
-	  }
+	  for(;;){
+		  run_mongoose();
+		  glue_init_1();
+		  osDelay(1);
+		  }
+}
   /* USER CODE END 5 */
 
 
@@ -567,9 +564,6 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  if (g_mqtt_conn != NULL) {
-
-	     }
     osDelay(1);
   }
   /* USER CODE END StartTask02 */

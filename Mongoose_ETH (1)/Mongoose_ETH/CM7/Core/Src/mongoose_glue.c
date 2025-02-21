@@ -31,8 +31,6 @@ static struct mg_timer *g_gateway1_timer = NULL;
 static void gateway1_parse_data(const char *data);
 static void gateway1_save_to_flash(void);
 static void gateway1_load_from_flash(void);
-static void gateway1_publish_res(struct mg_connection *c);
-static void gateway1_timer_fn(void *arg);
 
 static uint32_t fast_rand(void) {
   static uint32_t seed = 12345;
@@ -111,10 +109,6 @@ void glue_mqtt_on_connect(struct mg_connection *c, int code) {
 	    };
 	    mg_mqtt_sub(c, &opts);
 	    gateway1_load_from_flash();
-	    if (g_gateway1_data.device_count > 0 && !g_gateway1_timer) {
-	        g_gateway1_timer = mg_timer_add(&g_mgr, 1000, MG_TIMER_REPEAT,
-	                                      gateway1_timer_fn, c);
-	    }
 }
 
 void glue_mqtt_on_message(struct mg_connection *c, struct mg_str topic,
@@ -130,20 +124,16 @@ void glue_mqtt_on_message(struct mg_connection *c, struct mg_str topic,
 	        snprintf(buf, sizeof(buf), "%.*s", (int)data.len, data.buf);
 	        gateway1_parse_data(buf);
 
-	        // Send acknowledgment to Gateway1_res
+	        // Send acknowledgment to Gateway1_res only once
 	        struct mg_mqtt_opts ack_opts = {
 	            .topic = mg_str("Gateway1_res"),
-	            .message = mg_str("{\"status\":\"successful\"}"),
+	            .message = mg_str("Received Successfully"),
 	            .qos = 0
 	        };
 	        mg_mqtt_pub(c, &ack_opts);
 
-	        // Save to flash and start publishing
+	        // Save to flash (no timer needed anymore)
 	        gateway1_save_to_flash();
-	        if (!g_gateway1_timer) {
-	            g_gateway1_timer = mg_timer_add(&g_mgr, 1000, MG_TIMER_REPEAT,
-	                                          gateway1_timer_fn, c);
-	        }
 	    }
 }
 
@@ -226,12 +216,6 @@ static void gateway1_load_from_flash(void) {
 	    }
 }
 
-static void gateway1_timer_fn(void *arg) {
-	struct mg_connection *c = arg;
-	    if (c && !c->is_closing) {
-	        gateway1_publish_res(c);
-	    }
-}
 
 static void gateway1_publish_res(struct mg_connection *c) {
 	char buf[512];
