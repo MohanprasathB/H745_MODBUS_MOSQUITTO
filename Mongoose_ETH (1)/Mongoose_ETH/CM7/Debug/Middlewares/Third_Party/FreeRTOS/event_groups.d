@@ -1,5 +1,5 @@
 Middlewares/Third_Party/FreeRTOS/event_groups.o: \
- E:/Mongoose_ETH\ (1)/Mongoose_ETH/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c \
+ E:/STM32\ workspace/Mongoose_ETH\ (1)/Mongoose_ETH/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

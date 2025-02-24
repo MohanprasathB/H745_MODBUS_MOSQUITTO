@@ -683,7 +683,5 @@ void mongoose_init(void) {
 }
 
 void mongoose_poll(void) {
-  glue_lock();
   mg_mgr_poll(&g_mgr, 50);
-  glue_unlock();
 }

@@ -544,7 +544,6 @@ void StartDefaultTask(void *argument)
 	  /* Infinite loop */
 	  for(;;){
 		  run_mongoose();
-		  glue_init_1();
 		  osDelay(1);
 		  }
 }

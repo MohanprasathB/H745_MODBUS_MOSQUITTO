@@ -48,20 +48,17 @@ static Topic s_topics[TOPIC_COUNT];  // Array of topics
 
 static void timer_fn_all_topics(void *arg) {
   if (g_mqtt_conn == NULL) return;
-  static char msg[16];  // Reuse buffer
-  struct mg_mqtt_opts opts = {0};  // Initialize once
-
+  static char msg[16];
+  struct mg_mqtt_opts opts = {0};
   for (int i = 0; i < TOPIC_COUNT; i++) {
-	  s_topics[i].value = fast_rand() % 1000;
-	  snprintf(msg, sizeof(msg), "%d", s_topics[i].value);
-    // Publish
+    s_topics[i].value = i;  // Static value based on index
+    snprintf(msg, sizeof(msg), "%d", s_topics[i].value);
     opts.topic = mg_str(s_topics[i].name);
-    opts.message = mg_str_n(msg,strlen(msg));
-    opts.qos = 0;  // Add this to mg_mqtt_opts initialization
+    opts.message = mg_str_n(msg, strlen(msg));
+    opts.qos = 0;
     mg_mqtt_pub(g_mqtt_conn, &opts);
   }
 }
-
 
 static void init_topics(void) {
   for (int i = 0; i < TOPIC_COUNT; i++) {

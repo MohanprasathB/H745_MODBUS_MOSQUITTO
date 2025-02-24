@@ -1,5 +1,5 @@
 Middlewares/Third_Party/FreeRTOS/tasks.o: \
- E:/Mongoose_ETH\ (1)/Mongoose_ETH/Middlewares/Third_Party/FreeRTOS/Source/tasks.c \
+ E:/STM32\ workspace/Mongoose_ETH\ (1)/Mongoose_ETH/Middlewares/Third_Party/FreeRTOS/Source/tasks.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

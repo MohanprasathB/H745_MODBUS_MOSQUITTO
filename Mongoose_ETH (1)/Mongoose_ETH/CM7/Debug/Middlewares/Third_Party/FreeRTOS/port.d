@@ -1,5 +1,5 @@
 Middlewares/Third_Party/FreeRTOS/port.o: \
- E:/Mongoose_ETH\ (1)/Mongoose_ETH/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
+ E:/STM32\ workspace/Mongoose_ETH\ (1)/Mongoose_ETH/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \

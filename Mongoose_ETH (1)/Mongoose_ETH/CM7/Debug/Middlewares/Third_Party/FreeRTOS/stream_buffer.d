@@ -1,5 +1,5 @@
 Middlewares/Third_Party/FreeRTOS/stream_buffer.o: \
- E:/Mongoose_ETH\ (1)/Mongoose_ETH/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c \
+ E:/STM32\ workspace/Mongoose_ETH\ (1)/Mongoose_ETH/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
