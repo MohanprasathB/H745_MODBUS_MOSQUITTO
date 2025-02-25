@@ -9,27 +9,27 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .iram         000005a4  080233f0  080233f0  000243f0  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  3 .rodata       0000e80c  08023998  08023998  00024998  2**3
+  3 .rodata       0000e7fc  08023998  08023998  00024998  2**3
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  4 .ARM.extab    00000000  080321a4  080321a4  000348c0  2**0
+  4 .ARM.extab    00000000  08032194  08032194  000348c0  2**0
                   CONTENTS
-  5 .ARM          00000008  080321a4  080321a4  000331a4  2**2
+  5 .ARM          00000008  08032194  08032194  00033194  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  6 .preinit_array 00000000  080321ac  080321ac  000348c0  2**0
+  6 .preinit_array 00000000  0803219c  0803219c  000348c0  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .init_array   00000004  080321ac  080321ac  000331ac  2**2
+  7 .init_array   00000004  0803219c  0803219c  0003319c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .fini_array   00000004  080321b0  080321b0  000331b0  2**2
+  8 .fini_array   00000004  080321a0  080321a0  000331a0  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  9 .data         00000800  24000000  080321b4  00034000  2**3
+  9 .data         00000800  24000000  080321a4  00034000  2**3
                   CONTENTS, ALLOC, LOAD, DATA
- 10 .RxDescripSection 00000060  24000800  080329b4  00034800  2**2
+ 10 .RxDescripSection 00000060  24000800  080329a4  00034800  2**2
                   CONTENTS, ALLOC, LOAD, DATA
- 11 .TxDescripSection 00000060  24000860  08032a14  00034860  2**2
+ 11 .TxDescripSection 00000060  24000860  08032a04  00034860  2**2
                   CONTENTS, ALLOC, LOAD, DATA
- 12 .bss          000187f4  240008c0  08032a74  000348c0  2**3
+ 12 .bss          000187f4  240008c0  08032a64  000348c0  2**3
                   ALLOC
- 13 ._user_heap_stack 00000604  240190b4  08032a74  000350b4  2**0
+ 13 ._user_heap_stack 00000604  240190b4  08032a64  000350b4  2**0
                   ALLOC
  14 .ARM.attributes 0000002e  00000000  00000000  000348c0  2**0
                   CONTENTS, READONLY
@@ -43,15 +43,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  19 .debug_macro  00040614  00000000  00000000  0007d616  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_line   0003644b  00000000  00000000  000bdc2a  2**0
+ 20 .debug_line   00036671  00000000  00000000  000bdc2a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_str    001a2215  00000000  00000000  000f4075  2**0
+ 21 .debug_str    001a244d  00000000  00000000  000f429b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .comment      00000043  00000000  00000000  0029628a  2**0
+ 22 .comment      00000043  00000000  00000000  002966e8  2**0
                   CONTENTS, READONLY
- 23 .debug_frame  0000e384  00000000  00000000  002962d0  2**2
+ 23 .debug_frame  0000e384  00000000  00000000  0029672c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_line_str 00000063  00000000  00000000  002a4654  2**0
+ 24 .debug_line_str 0000007c  00000000  00000000  002a4ab0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1241,10 +1241,10 @@ int main(void)
   while (1)
  8000d4c:	bf00      	nop
  8000d4e:	e7fd      	b.n	8000d4c <main+0x48>
- 8000d50:	08025e3c 	.word	0x08025e3c
+ 8000d50:	08025e2c 	.word	0x08025e2c
  8000d54:	08001139 	.word	0x08001139
  8000d58:	24000b00 	.word	0x24000b00
- 8000d5c:	08025e60 	.word	0x08025e60
+ 8000d5c:	08025e50 	.word	0x08025e50
  8000d60:	0800114b 	.word	0x0800114b
  8000d64:	24001b4c 	.word	0x24001b4c
 
@@ -15251,7 +15251,7 @@ static int mqtt_prop_type_by_id(uint8_t prop_id) {
  8007b44:	46bd      	mov	sp, r7
  8007b46:	f85d 7b04 	ldr.w	r7, [sp], #4
  8007b4a:	4770      	bx	lr
- 8007b4c:	08025e84 	.word	0x08025e84
+ 8007b4c:	08025e74 	.word	0x08025e74
 
 08007b50 <get_properties_length>:
 
@@ -19275,7 +19275,7 @@ static void tx_dhcp_request_sel(struct mg_tcpip_if *ifp, uint32_t ip_req,
  80097d0:	bdb0      	pop	{r4, r5, r7, pc}
  80097d2:	bf00      	nop
  80097d4:	0802470c 	.word	0x0802470c
- 80097d8:	08025ebc 	.word	0x08025ebc
+ 80097d8:	08025eac 	.word	0x08025eac
 
 080097dc <tx_dhcp_request_re>:
 
@@ -19351,7 +19351,7 @@ static void tx_dhcp_discover(struct mg_tcpip_if *ifp) {
  800984c:	bd80      	pop	{r7, pc}
  800984e:	bf00      	nop
  8009850:	08024728 	.word	0x08024728
- 8009854:	08025ebc 	.word	0x08025ebc
+ 8009854:	08025eac 	.word	0x08025eac
 
 08009858 <getpeer>:
 
@@ -22863,7 +22863,7 @@ static void mg_tcpip_rx(struct mg_tcpip_if *ifp, void *buf, size_t len) {
  800b2b2:	374c      	adds	r7, #76	@ 0x4c
  800b2b4:	46bd      	mov	sp, r7
  800b2b6:	bd90      	pop	{r4, r7, pc}
- 800b2b8:	08025ebc 	.word	0x08025ebc
+ 800b2b8:	08025eac 	.word	0x08025eac
  800b2bc:	24000240 	.word	0x24000240
 
 0800b2c0 <mg_tcpip_poll>:
@@ -23404,7 +23404,7 @@ static void mg_tcpip_poll(struct mg_tcpip_if *ifp, uint64_t now) {
  800b6c0:	bdf0      	pop	{r4, r5, r6, r7, pc}
  800b6c2:	bf00      	nop
  800b6c4:	001b7740 	.word	0x001b7740
- 800b6c8:	08025ebc 	.word	0x08025ebc
+ 800b6c8:	08025eac 	.word	0x08025eac
  800b6cc:	08024898 	.word	0x08024898
  800b6d0:	080248a4 	.word	0x080248a4
  800b6d4:	080248b8 	.word	0x080248b8
@@ -25451,7 +25451,7 @@ static size_t mg_queue_read_len(struct mg_queue *q) {
  800c4a4:	46bd      	mov	sp, r7
  800c4a6:	bd80      	pop	{r7, pc}
  800c4a8:	08024970 	.word	0x08024970
- 800c4ac:	0802609c 	.word	0x0802609c
+ 800c4ac:	0802608c 	.word	0x0802608c
  800c4b0:	08024994 	.word	0x08024994
 
 0800c4b4 <mg_queue_write_len>:
@@ -25660,7 +25660,7 @@ size_t mg_queue_next(struct mg_queue *q, char **buf) {
  800c60c:	46bd      	mov	sp, r7
  800c60e:	bd80      	pop	{r7, pc}
  800c610:	080249ac 	.word	0x080249ac
- 800c614:	080260b0 	.word	0x080260b0
+ 800c614:	080260a0 	.word	0x080260a0
  800c618:	08024994 	.word	0x08024994
 
 0800c61c <mg_queue_add>:
@@ -25714,7 +25714,7 @@ void mg_queue_add(struct mg_queue *q, size_t len) {
  800c678:	bd80      	pop	{r7, pc}
  800c67a:	bf00      	nop
  800c67c:	080249c8 	.word	0x080249c8
- 800c680:	080260c0 	.word	0x080260c0
+ 800c680:	080260b0 	.word	0x080260b0
  800c684:	08024994 	.word	0x08024994
  800c688:	080249d0 	.word	0x080249d0
 
@@ -25753,7 +25753,7 @@ void mg_queue_del(struct mg_queue *q, size_t len) {
  800c6c4:	46bd      	mov	sp, r7
  800c6c6:	bd80      	pop	{r7, pc}
  800c6c8:	08024a00 	.word	0x08024a00
- 800c6cc:	080260d0 	.word	0x080260d0
+ 800c6cc:	080260c0 	.word	0x080260c0
  800c6d0:	08024994 	.word	0x08024994
 
 0800c6d4 <mg_sha256_init>:
@@ -26198,7 +26198,7 @@ static void mg_sha256_chunk(mg_sha256_ctx *ctx) {
  800cb50:	46bd      	mov	sp, r7
  800cb52:	f85d 7b04 	ldr.w	r7, [sp], #4
  800cb56:	4770      	bx	lr
- 800cb58:	08025ec4 	.word	0x08025ec4
+ 800cb58:	08025eb4 	.word	0x08025eb4
 
 0800cb5c <mg_sha256_update>:
 
@@ -31075,7 +31075,7 @@ static void mg_tls_server_send_hello(struct mg_connection *c) {
  800f19a:	bdb0      	pop	{r4, r5, r7, pc}
  800f19c:	08024ce0 	.word	0x08024ce0
  800f1a0:	08024cbc 	.word	0x08024cbc
- 800f1a4:	08026078 	.word	0x08026078
+ 800f1a4:	08026068 	.word	0x08026068
  800f1a8:	08024cc0 	.word	0x08024cc0
  800f1ac:	08024cd0 	.word	0x08024cd0
  800f1b0:	08024cd8 	.word	0x08024cd8
@@ -32199,7 +32199,7 @@ static void mg_tls_client_send_hello(struct mg_connection *c) {
  800fb1c:	46bd      	mov	sp, r7
  800fb1e:	bdb0      	pop	{r4, r5, r7, pc}
  800fb20:	08024cbc 	.word	0x08024cbc
- 800fb24:	08026078 	.word	0x08026078
+ 800fb24:	08026068 	.word	0x08026068
  800fb28:	08024cd8 	.word	0x08024cd8
 
 0800fb2c <mg_tls_client_recv_hello>:
@@ -40032,7 +40032,7 @@ MG_UECC_Curve mg_uecc_secp256r1(void) {
  8013a04:	46bd      	mov	sp, r7
  8013a06:	f85d 7b04 	ldr.w	r7, [sp], #4
  8013a0a:	4770      	bx	lr
- 8013a0c:	08025fc4 	.word	0x08025fc4
+ 8013a0c:	08025fb4 	.word	0x08025fb4
 
 08013a10 <vli_mmod_fast_secp256r1>:
                                num_words_secp256r1);
@@ -40457,7 +40457,7 @@ static void vli_mmod_fast_secp256r1(uint32_t *result, uint32_t *product) {
  8013cba:	46bd      	mov	sp, r7
  8013cbc:	bd80      	pop	{r7, pc}
  8013cbe:	bf00      	nop
- 8013cc0:	08025fc8 	.word	0x08025fc8
+ 8013cc0:	08025fb8 	.word	0x08025fb8
 
 08013cc4 <apply_z>:
 coordinates. From http://eprint.iacr.org/2011/338.pdf
@@ -44022,7 +44022,7 @@ static void ladder_part1(mg_fe xs[5]) {
  80158e2:	3720      	adds	r7, #32
  80158e4:	46bd      	mov	sp, r7
  80158e6:	bd80      	pop	{r7, pc}
- 80158e8:	08026098 	.word	0x08026098
+ 80158e8:	08026088 	.word	0x08026088
 
 080158ec <ladder_part2>:
 
@@ -44458,7 +44458,7 @@ int mg_tls_x25519(uint8_t out[X25519_BYTES], const uint8_t scalar[X25519_BYTES],
  8015c32:	37f8      	adds	r7, #248	@ 0xf8
  8015c34:	46bd      	mov	sp, r7
  8015c36:	bd80      	pop	{r7, pc}
- 8015c38:	080260e0 	.word	0x080260e0
+ 8015c38:	080260d0 	.word	0x080260d0
 
 08015c3c <mg_url_is_ssl>:
 
@@ -45111,7 +45111,7 @@ uint32_t mg_crc32(uint32_t crc, const char *buf, size_t len) {
  8016084:	f85d 7b04 	ldr.w	r7, [sp], #4
  8016088:	4770      	bx	lr
  801608a:	bf00      	nop
- 801608c:	08026108 	.word	0x08026108
+ 801608c:	080260f8 	.word	0x080260f8
 
 08016090 <mg_path_is_sane>:
     }
@@ -46541,7 +46541,7 @@ const char *mg_unlist(size_t no) {
  8016aac:	46bd      	mov	sp, r7
  8016aae:	f85d 7b04 	ldr.w	r7, [sp], #4
  8016ab2:	4770      	bx	lr
- 8016ab4:	08031f10 	.word	0x08031f10
+ 8016ab4:	08031f00 	.word	0x08031f00
 
 08016ab8 <mg_unpack>:
 const char *mg_unpack(const char *name, size_t *size, time_t *mtime) {
@@ -46605,7 +46605,7 @@ const char *mg_unpack(const char *name, size_t *size, time_t *mtime) {
  8016b1a:	46bd      	mov	sp, r7
  8016b1c:	bd80      	pop	{r7, pc}
  8016b1e:	bf00      	nop
- 8016b20:	08031f10 	.word	0x08031f10
+ 8016b20:	08031f00 	.word	0x08031f00
 
 08016b24 <timer_fn_all_topics>:
   int value;      // Current value
@@ -46740,7 +46740,7 @@ static void init_topics(void) {
  8016c22:	687b      	ldr	r3, [r7, #4]
  8016c24:	f5b3 7f7a 	cmp.w	r3, #1000	@ 0x3e8
  8016c28:	dbec      	blt.n	8016c04 <init_topics+0xc>
-               "sarayu/d1/topic%d|m/", i + 1);
+               "sarayu%d", i + 1);
   }
 }
  8016c2a:	bf00      	nop
@@ -46826,7 +46826,7 @@ void glue_mqtt_tls_init(struct mg_connection *c) {
  8016cb6:	46bd      	mov	sp, r7
  8016cb8:	bd80      	pop	{r7, pc}
  8016cba:	bf00      	nop
- 8016cbc:	080255e4 	.word	0x080255e4
+ 8016cbc:	080255d8 	.word	0x080255d8
 
 08016cc0 <glue_mqtt_on_connect>:
 
@@ -46878,9 +46878,9 @@ void glue_mqtt_on_connect(struct mg_connection *c, int code) {
  8016d1a:	3748      	adds	r7, #72	@ 0x48
  8016d1c:	46bd      	mov	sp, r7
  8016d1e:	bd80      	pop	{r7, pc}
- 8016d20:	08025600 	.word	0x08025600
- 8016d24:	08025608 	.word	0x08025608
- 8016d28:	08025614 	.word	0x08025614
+ 8016d20:	080255ec 	.word	0x080255ec
+ 8016d24:	080255f4 	.word	0x080255f4
+ 8016d28:	08025600 	.word	0x08025600
 
 08016d2c <glue_mqtt_on_message>:
 
@@ -46999,11 +46999,11 @@ void glue_mqtt_on_message(struct mg_connection *c, struct mg_str topic,
  8016e2a:	b002      	add	sp, #8
  8016e2c:	4770      	bx	lr
  8016e2e:	bf00      	nop
- 8016e30:	08025620 	.word	0x08025620
- 8016e34:	08025614 	.word	0x08025614
- 8016e38:	08025638 	.word	0x08025638
- 8016e3c:	08025640 	.word	0x08025640
- 8016e40:	08025650 	.word	0x08025650
+ 8016e30:	0802560c 	.word	0x0802560c
+ 8016e34:	08025600 	.word	0x08025600
+ 8016e38:	08025624 	.word	0x08025624
+ 8016e3c:	0802562c 	.word	0x0802562c
+ 8016e40:	0802563c 	.word	0x0802563c
 
 08016e44 <gateway1_parse_data>:
 
@@ -47292,8 +47292,8 @@ static void gateway1_parse_data(const char *input) {
  80170dc:	46bd      	mov	sp, r7
  80170de:	bdb0      	pop	{r4, r5, r7, pc}
  80170e0:	24005d28 	.word	0x24005d28
- 80170e4:	08032013 	.word	0x08032013
- 80170e8:	08025668 	.word	0x08025668
+ 80170e4:	08032003 	.word	0x08032003
+ 80170e8:	08025654 	.word	0x08025654
  80170ec:	66666667 	.word	0x66666667
 
 080170f0 <gateway1_save_to_flash>:
@@ -47371,7 +47371,7 @@ static void gateway1_save_to_flash(void) {
  8017152:	46bd      	mov	sp, r7
  8017154:	bdb0      	pop	{r4, r5, r7, pc}
  8017156:	bf00      	nop
- 8017158:	0802566c 	.word	0x0802566c
+ 8017158:	08025658 	.word	0x08025658
  801715c:	24005d28 	.word	0x24005d28
  8017160:	47415445 	.word	0x47415445
  8017164:	081e0000 	.word	0x081e0000
@@ -47489,9 +47489,9 @@ struct mg_connection *glue_mqtt_connect(struct mg_mgr *mgr, mg_event_handler_t f
  8017226:	46bd      	mov	sp, r7
  8017228:	bd80      	pop	{r7, pc}
  801722a:	bf00      	nop
- 801722c:	080255e4 	.word	0x080255e4
- 8017230:	08025600 	.word	0x08025600
- 8017234:	08025608 	.word	0x08025608
+ 801722c:	080255d8 	.word	0x080255d8
+ 8017230:	080255ec 	.word	0x080255ec
+ 8017234:	080255f4 	.word	0x080255f4
 
 08017238 <glue_sntp_on_time>:
 
@@ -47684,9 +47684,9 @@ int glue_authenticate(const char *user, const char *pass) {
  801735e:	46bd      	mov	sp, r7
  8017360:	bd80      	pop	{r7, pc}
  8017362:	bf00      	nop
- 8017364:	08025600 	.word	0x08025600
- 8017368:	08025608 	.word	0x08025608
- 801736c:	080256a8 	.word	0x080256a8
+ 8017364:	080255ec 	.word	0x080255ec
+ 8017368:	080255f4 	.word	0x080255f4
+ 801736c:	08025694 	.word	0x08025694
 
 08017370 <glue_check_reboot>:
 
@@ -47860,7 +47860,7 @@ void  *glue_file_open_file_upload(char *file_name, size_t total_size) {
  801748a:	3790      	adds	r7, #144	@ 0x90
  801748c:	46bd      	mov	sp, r7
  801748e:	bd80      	pop	{r7, pc}
- 8017490:	080256b0 	.word	0x080256b0
+ 8017490:	0802569c 	.word	0x0802569c
 
 08017494 <glue_file_close_file_upload>:
 bool  glue_file_close_file_upload(void *fp) {
@@ -47988,8 +47988,8 @@ size_t glue_graph_get_graph1(uint32_t from, uint32_t to,
  801756a:	46bd      	mov	sp, r7
  801756c:	bdb0      	pop	{r4, r5, r7, pc}
  801756e:	bf00      	nop
- 8017570:	080256b8 	.word	0x080256b8
- 8017574:	080256e0 	.word	0x080256e0
+ 8017570:	080256a4 	.word	0x080256a4
+ 8017574:	080256d0 	.word	0x080256d0
 
 08017578 <glue_get_state>:
 
@@ -48297,7 +48297,7 @@ static struct apihandler *find_handler(struct mg_http_message *hm) {
  8017772:	3718      	adds	r7, #24
  8017774:	46bd      	mov	sp, r7
  8017776:	bd80      	pop	{r7, pc}
- 8017778:	08025894 	.word	0x08025894
+ 8017778:	08025884 	.word	0x08025884
  801777c:	24000558 	.word	0x24000558
 
 08017780 <mg_json_get_str2>:
@@ -48506,7 +48506,7 @@ static struct user *authenticate(struct mg_http_message *hm) {
  801791c:	bd80      	pop	{r7, pc}
  801791e:	bf00      	nop
  8017920:	24010bcc 	.word	0x24010bcc
- 8017924:	0802589c 	.word	0x0802589c
+ 8017924:	0802588c 	.word	0x0802588c
 
 08017928 <handle_login>:
 
@@ -48593,14 +48593,14 @@ static void handle_login(struct mg_connection *c, struct user *u) {
  80179de:	46bd      	mov	sp, r7
  80179e0:	bd80      	pop	{r7, pc}
  80179e2:	bf00      	nop
- 80179e4:	080258a0 	.word	0x080258a0
- 80179e8:	080258ac 	.word	0x080258ac
+ 80179e4:	08025890 	.word	0x08025890
+ 80179e8:	0802589c 	.word	0x0802589c
  80179ec:	00015180 	.word	0x00015180
- 80179f0:	080258b0 	.word	0x080258b0
- 80179f4:	08025784 	.word	0x08025784
+ 80179f0:	080258a0 	.word	0x080258a0
+ 80179f4:	08025774 	.word	0x08025774
  80179f8:	0800c409 	.word	0x0800c409
- 80179fc:	0802590c 	.word	0x0802590c
- 8017a00:	080258fc 	.word	0x080258fc
+ 80179fc:	080258fc 	.word	0x080258fc
+ 8017a00:	080258ec 	.word	0x080258ec
 
 08017a04 <handle_logout>:
 
@@ -48647,10 +48647,10 @@ static void handle_logout(struct mg_connection *c) {
  8017a5e:	46bd      	mov	sp, r7
  8017a60:	bd80      	pop	{r7, pc}
  8017a62:	bf00      	nop
- 8017a64:	080258a0 	.word	0x080258a0
- 8017a68:	080258ac 	.word	0x080258ac
- 8017a6c:	08025914 	.word	0x08025914
- 8017a70:	08025978 	.word	0x08025978
+ 8017a64:	08025890 	.word	0x08025890
+ 8017a68:	0802589c 	.word	0x0802589c
+ 8017a6c:	08025904 	.word	0x08025904
+ 8017a70:	08025968 	.word	0x08025968
 
 08017a74 <close_uploaded_file>:
 struct action_state {
@@ -48873,9 +48873,9 @@ static void upload_handler(struct mg_connection *c, int ev, void *ev_data) {
  8017bda:	3720      	adds	r7, #32
  8017bdc:	46bd      	mov	sp, r7
  8017bde:	bd80      	pop	{r7, pc}
- 8017be0:	08025988 	.word	0x08025988
- 8017be4:	080258ac 	.word	0x080258ac
- 8017be8:	08025998 	.word	0x08025998
+ 8017be0:	08025978 	.word	0x08025978
+ 8017be4:	0802589c 	.word	0x0802589c
+ 8017be8:	08025988 	.word	0x08025988
 
 08017bec <prep_upload>:
 
@@ -49007,9 +49007,9 @@ static void prep_upload(struct mg_connection *c, struct mg_http_message *hm,
  8017cea:	3798      	adds	r7, #152	@ 0x98
  8017cec:	46bd      	mov	sp, r7
  8017cee:	bd80      	pop	{r7, pc}
- 8017cf0:	080259a0 	.word	0x080259a0
- 8017cf4:	080259ac 	.word	0x080259ac
- 8017cf8:	080259c0 	.word	0x080259c0
+ 8017cf0:	08025990 	.word	0x08025990
+ 8017cf4:	0802599c 	.word	0x0802599c
+ 8017cf8:	080259b0 	.word	0x080259b0
  8017cfc:	08017ab9 	.word	0x08017ab9
 
 08017d00 <handle_uploads>:
@@ -49147,11 +49147,11 @@ static void handle_uploads(struct mg_connection *c, int ev, void *ev_data) {
  8017dde:	46bd      	mov	sp, r7
  8017de0:	bd80      	pop	{r7, pc}
  8017de2:	bf00      	nop
- 8017de4:	080259fc 	.word	0x080259fc
- 8017de8:	08025a04 	.word	0x08025a04
- 8017dec:	080259c0 	.word	0x080259c0
- 8017df0:	0802583c 	.word	0x0802583c
- 8017df4:	0802582c 	.word	0x0802582c
+ 8017de4:	080259ec 	.word	0x080259ec
+ 8017de8:	080259f4 	.word	0x080259f4
+ 8017dec:	080259b0 	.word	0x080259b0
+ 8017df0:	0802582c 	.word	0x0802582c
+ 8017df4:	0802581c 	.word	0x0802581c
 
 08017df8 <handle_action>:
 
@@ -49226,10 +49226,10 @@ static void handle_action(struct mg_connection *c, struct mg_http_message *hm,
  8017e62:	46bd      	mov	sp, r7
  8017e64:	bd80      	pop	{r7, pc}
  8017e66:	bf00      	nop
- 8017e68:	08025a14 	.word	0x08025a14
- 8017e6c:	080259c0 	.word	0x080259c0
- 8017e70:	08025a1c 	.word	0x08025a1c
- 8017e74:	0802589c 	.word	0x0802589c
+ 8017e68:	08025a04 	.word	0x08025a04
+ 8017e6c:	080259b0 	.word	0x080259b0
+ 8017e70:	08025a0c 	.word	0x08025a0c
+ 8017e74:	0802588c 	.word	0x0802588c
 
 08017e78 <print_struct>:
 
@@ -49480,21 +49480,21 @@ size_t print_struct(void (*out)(char, void *), void *ptr, va_list *ap) {
  8018046:	3728      	adds	r7, #40	@ 0x28
  8018048:	46bd      	mov	sp, r7
  801804a:	bd80      	pop	{r7, pc}
- 801804c:	080258ac 	.word	0x080258ac
- 8018050:	08025a24 	.word	0x08025a24
+ 801804c:	0802589c 	.word	0x0802589c
+ 8018050:	08025a14 	.word	0x08025a14
  8018054:	0800c409 	.word	0x0800c409
- 8018058:	08025a28 	.word	0x08025a28
- 801805c:	08025738 	.word	0x08025738
- 8018060:	08025a30 	.word	0x08025a30
- 8018064:	080257c8 	.word	0x080257c8
- 8018068:	08025a34 	.word	0x08025a34
- 801806c:	08025774 	.word	0x08025774
- 8018070:	08025a1c 	.word	0x08025a1c
- 8018074:	08025a14 	.word	0x08025a14
- 8018078:	0802589c 	.word	0x0802589c
- 801807c:	08025764 	.word	0x08025764
- 8018080:	08025a38 	.word	0x08025a38
- 8018084:	08025a3c 	.word	0x08025a3c
+ 8018058:	08025a18 	.word	0x08025a18
+ 801805c:	08025728 	.word	0x08025728
+ 8018060:	08025a20 	.word	0x08025a20
+ 8018064:	080257b8 	.word	0x080257b8
+ 8018068:	08025a24 	.word	0x08025a24
+ 801806c:	08025764 	.word	0x08025764
+ 8018070:	08025a0c 	.word	0x08025a0c
+ 8018074:	08025a04 	.word	0x08025a04
+ 8018078:	0802588c 	.word	0x0802588c
+ 801807c:	08025754 	.word	0x08025754
+ 8018080:	08025a28 	.word	0x08025a28
+ 8018084:	08025a2c 	.word	0x08025a2c
 
 08018088 <handle_object>:
 
@@ -49731,15 +49731,15 @@ static void handle_object(struct mg_connection *c, struct mg_http_message *hm,
  801828e:	46bd      	mov	sp, r7
  8018290:	bd80      	pop	{r7, pc}
  8018292:	bf00      	nop
- 8018294:	08025a44 	.word	0x08025a44
- 8018298:	08025738 	.word	0x08025738
- 801829c:	08025774 	.word	0x08025774
- 80182a0:	080257c8 	.word	0x080257c8
- 80182a4:	08025764 	.word	0x08025764
+ 8018294:	08025a34 	.word	0x08025a34
+ 8018298:	08025728 	.word	0x08025728
+ 801829c:	08025764 	.word	0x08025764
+ 80182a0:	080257b8 	.word	0x080257b8
+ 80182a4:	08025754 	.word	0x08025754
  80182a8:	24010bc8 	.word	0x24010bc8
  80182ac:	08017e79 	.word	0x08017e79
- 80182b0:	08025a4c 	.word	0x08025a4c
- 80182b4:	080259c0 	.word	0x080259c0
+ 80182b0:	08025a3c 	.word	0x08025a3c
+ 80182b4:	080259b0 	.word	0x080259b0
 
 080182b8 <print_timeseries>:
 
@@ -49828,9 +49828,9 @@ size_t print_timeseries(void (*out)(char, void *), void *ptr, va_list *ap) {
  801834a:	46bd      	mov	sp, r7
  801834c:	bd80      	pop	{r7, pc}
  801834e:	bf00      	nop
- 8018350:	080258ac 	.word	0x080258ac
- 8018354:	08025a24 	.word	0x08025a24
- 8018358:	08025a54 	.word	0x08025a54
+ 8018350:	0802589c 	.word	0x0802589c
+ 8018354:	08025a14 	.word	0x08025a14
+ 8018358:	08025a44 	.word	0x08025a44
 
 0801835c <handle_graph>:
 
@@ -49907,11 +49907,11 @@ static void handle_graph(struct mg_connection *c, struct mg_http_message *hm,
  801840e:	46bd      	mov	sp, r7
  8018410:	bdb0      	pop	{r4, r5, r7, pc}
  8018412:	bf00      	nop
- 8018414:	08025a60 	.word	0x08025a60
- 8018418:	08025a68 	.word	0x08025a68
+ 8018414:	08025a50 	.word	0x08025a50
+ 8018418:	08025a58 	.word	0x08025a58
  801841c:	080182b9 	.word	0x080182b9
- 8018420:	08025a70 	.word	0x08025a70
- 8018424:	080259c0 	.word	0x080259c0
+ 8018420:	08025a60 	.word	0x08025a60
+ 8018424:	080259b0 	.word	0x080259b0
 
 08018428 <handle_api_call>:
 
@@ -49993,11 +49993,11 @@ static void handle_api_call(struct mg_connection *c, struct mg_http_message *hm,
  80184aa:	3710      	adds	r7, #16
  80184ac:	46bd      	mov	sp, r7
  80184ae:	bd80      	pop	{r7, pc}
- 80184b0:	0802585c 	.word	0x0802585c
- 80184b4:	08025814 	.word	0x08025814
- 80184b8:	0802584c 	.word	0x0802584c
- 80184bc:	08025a78 	.word	0x08025a78
- 80184c0:	080259c0 	.word	0x080259c0
+ 80184b0:	0802584c 	.word	0x0802584c
+ 80184b4:	08025804 	.word	0x08025804
+ 80184b8:	0802583c 	.word	0x0802583c
+ 80184bc:	08025a68 	.word	0x08025a68
+ 80184c0:	080259b0 	.word	0x080259b0
 
 080184c4 <http_ev_handler>:
   s_device_change_version++;
@@ -50326,24 +50326,24 @@ static void http_ev_handler(struct mg_connection *c, int ev, void *ev_data) {
  801874e:	46bd      	mov	sp, r7
  8018750:	bd80      	pop	{r7, pc}
  8018752:	bf00      	nop
- 8018754:	08025a1c 	.word	0x08025a1c
- 8018758:	080259c0 	.word	0x080259c0
- 801875c:	080259fc 	.word	0x080259fc
- 8018760:	08025a04 	.word	0x08025a04
- 8018764:	08025a90 	.word	0x08025a90
- 8018768:	08025a9c 	.word	0x08025a9c
- 801876c:	08025aa8 	.word	0x08025aa8
- 8018770:	08025ab0 	.word	0x08025ab0
- 8018774:	08025ab8 	.word	0x08025ab8
+ 8018754:	08025a0c 	.word	0x08025a0c
+ 8018758:	080259b0 	.word	0x080259b0
+ 801875c:	080259ec 	.word	0x080259ec
+ 8018760:	080259f4 	.word	0x080259f4
+ 8018764:	08025a80 	.word	0x08025a80
+ 8018768:	08025a8c 	.word	0x08025a8c
+ 801876c:	08025a98 	.word	0x08025a98
+ 8018770:	08025aa0 	.word	0x08025aa0
+ 8018774:	08025aa8 	.word	0x08025aa8
  8018778:	24010bc8 	.word	0x24010bc8
- 801877c:	0802575c 	.word	0x0802575c
+ 801877c:	0802574c 	.word	0x0802574c
  8018780:	0800c409 	.word	0x0800c409
- 8018784:	08025ac8 	.word	0x08025ac8
- 8018788:	08025ad4 	.word	0x08025ad4
+ 8018784:	08025ab8 	.word	0x08025ab8
+ 8018788:	08025ac4 	.word	0x08025ac4
  801878c:	24000008 	.word	0x24000008
- 8018790:	08025ae0 	.word	0x08025ae0
- 8018794:	08025afc 	.word	0x08025afc
- 8018798:	08025cd8 	.word	0x08025cd8
+ 8018790:	08025ad0 	.word	0x08025ad0
+ 8018794:	08025aec 	.word	0x08025aec
+ 8018798:	08025cc8 	.word	0x08025cc8
 
 0801879c <sntp_ev_handler>:
 #endif  // WIZARD_ENABLE_HTTP || WIZARD_ENABLE_HTTPS
@@ -50444,7 +50444,7 @@ static void sntp_timer(void *param) {
  8018850:	24010bd8 	.word	0x24010bd8
  8018854:	24010bd0 	.word	0x24010bd0
  8018858:	0801879d 	.word	0x0801879d
- 801885c:	08025dbc 	.word	0x08025dbc
+ 801885c:	08025dac 	.word	0x08025dac
 
 08018860 <mqtt_event_handler>:
 #endif  // WIZARD_ENABLE_SNTP
@@ -51085,12 +51085,12 @@ void mongoose_init(void) {
  8018d50:	24010b80 	.word	0x24010b80
  8018d54:	24000240 	.word	0x24000240
  8018d58:	080184c5 	.word	0x080184c5
- 8018d5c:	08025dd8 	.word	0x08025dd8
- 8018d60:	080258ac 	.word	0x080258ac
- 8018d64:	08025dec 	.word	0x08025dec
+ 8018d5c:	08025dc8 	.word	0x08025dc8
+ 8018d60:	0802589c 	.word	0x0802589c
+ 8018d64:	08025ddc 	.word	0x08025ddc
  8018d68:	080187f1 	.word	0x080187f1
  8018d6c:	080188d5 	.word	0x080188d5
- 8018d70:	08025e00 	.word	0x08025e00
+ 8018d70:	08025df0 	.word	0x08025df0
  8018d74:	08018c65 	.word	0x08018c65
 
 08018d78 <mongoose_poll>:
@@ -52299,7 +52299,7 @@ LoopFillZerobss:
   ldr r1, =_edata
  801945c:	24000800 	.word	0x24000800
   ldr r2, =_sidata
- 8019460:	080321b4 	.word	0x080321b4
+ 8019460:	080321a4 	.word	0x080321a4
   ldr r2, =_sbss
  8019464:	240008c0 	.word	0x240008c0
   ldr r4, =_ebss
@@ -52401,7 +52401,7 @@ HAL_StatusTypeDef HAL_Init(void)
  80194d4:	46bd      	mov	sp, r7
  80194d6:	bd80      	pop	{r7, pc}
  80194d8:	58024400 	.word	0x58024400
- 80194dc:	08025e2c 	.word	0x08025e2c
+ 80194dc:	08025e1c 	.word	0x08025e1c
  80194e0:	24000004 	.word	0x24000004
  80194e4:	24000000 	.word	0x24000000
 
@@ -58078,7 +58078,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(const RCC_ClkInitTypeDef  *RCC_ClkInitStru
  801b5e8:	bd80      	pop	{r7, pc}
  801b5ea:	bf00      	nop
  801b5ec:	58024400 	.word	0x58024400
- 801b5f0:	08025e2c 	.word	0x08025e2c
+ 801b5f0:	08025e1c 	.word	0x08025e1c
  801b5f4:	24000004 	.word	0x24000004
  801b5f8:	24000000 	.word	0x24000000
  801b5fc:	24000798 	.word	0x24000798
@@ -58480,7 +58480,7 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
  801b940:	46bd      	mov	sp, r7
  801b942:	bd80      	pop	{r7, pc}
  801b944:	58024400 	.word	0x58024400
- 801b948:	08025e2c 	.word	0x08025e2c
+ 801b948:	08025e1c 	.word	0x08025e1c
  801b94c:	24000004 	.word	0x24000004
  801b950:	24000000 	.word	0x24000000
 
@@ -58514,7 +58514,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  801b974:	4618      	mov	r0, r3
  801b976:	bd80      	pop	{r7, pc}
  801b978:	58024400 	.word	0x58024400
- 801b97c:	08025e2c 	.word	0x08025e2c
+ 801b97c:	08025e1c 	.word	0x08025e1c
 
 0801b980 <HAL_RCC_GetPCLK2Freq>:
   * @note   Each time PCLK2 changes, this function must be called to update the
@@ -58545,7 +58545,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  801b9a0:	4618      	mov	r0, r3
  801b9a2:	bd80      	pop	{r7, pc}
  801b9a4:	58024400 	.word	0x58024400
- 801b9a8:	08025e2c 	.word	0x08025e2c
+ 801b9a8:	08025e1c 	.word	0x08025e1c
 
 0801b9ac <HAL_RCC_GetClockConfig>:
   * will be configured.
@@ -61676,7 +61676,7 @@ uint32_t HAL_RCCEx_GetD3PCLK1Freq(void)
  801ce64:	4618      	mov	r0, r3
  801ce66:	bd80      	pop	{r7, pc}
  801ce68:	58024400 	.word	0x58024400
- 801ce6c:	08025e2c 	.word	0x08025e2c
+ 801ce6c:	08025e1c 	.word	0x08025e1c
 
 0801ce70 <HAL_RCCEx_GetPLL2ClockFreq>:
   *         right PLL2CLK value. Otherwise, any configuration based on this function will be incorrect.
@@ -65428,7 +65428,7 @@ HAL_StatusTypeDef UART_SetConfig(UART_HandleTypeDef *huart)
  801e86a:	e0b5      	b.n	801e9d8 <UART_SetConfig+0xa94>
  801e86c:	03d09000 	.word	0x03d09000
  801e870:	003d0900 	.word	0x003d0900
- 801e874:	08031f40 	.word	0x08031f40
+ 801e874:	08031f30 	.word	0x08031f30
  801e878:	58024400 	.word	0x58024400
       }
     }
@@ -65644,7 +65644,7 @@ HAL_StatusTypeDef UART_SetConfig(UART_HandleTypeDef *huart)
  801ea04:	58024400 	.word	0x58024400
  801ea08:	03d09000 	.word	0x03d09000
  801ea0c:	003d0900 	.word	0x003d0900
- 801ea10:	08031f40 	.word	0x08031f40
+ 801ea10:	08031f30 	.word	0x08031f30
 
 0801ea14 <UART_AdvFeatureConfig>:
   * @brief Configure the UART peripheral advanced features.
@@ -66749,8 +66749,8 @@ static void UARTEx_SetNbDataToProcess(UART_HandleTypeDef *huart)
  801f04c:	f85d 7b04 	ldr.w	r7, [sp], #4
  801f050:	4770      	bx	lr
  801f052:	bf00      	nop
- 801f054:	08031f58 	.word	0x08031f58
- 801f058:	08031f60 	.word	0x08031f60
+ 801f054:	08031f48 	.word	0x08031f48
+ 801f058:	08031f50 	.word	0x08031f50
 
 0801f05c <__NVIC_SetPriority>:
 {
@@ -71939,7 +71939,7 @@ BaseType_t xReturn;
  8020bc2:	3718      	adds	r7, #24
  8020bc4:	46bd      	mov	sp, r7
  8020bc6:	bd80      	pop	{r7, pc}
- 8020bc8:	08025e14 	.word	0x08025e14
+ 8020bc8:	08025e04 	.word	0x08025e04
  8020bcc:	08021219 	.word	0x08021219
  8020bd0:	24018e34 	.word	0x24018e34
  8020bd4:	2401893c 	.word	0x2401893c
@@ -73852,7 +73852,7 @@ BaseType_t xReturn = pdFAIL;
  8021614:	bd80      	pop	{r7, pc}
  8021616:	bf00      	nop
  8021618:	24018e6c 	.word	0x24018e6c
- 802161c:	08025e1c 	.word	0x08025e1c
+ 802161c:	08025e0c 	.word	0x08025e0c
  8021620:	08021761 	.word	0x08021761
  8021624:	24018e70 	.word	0x24018e70
 
@@ -74961,7 +74961,7 @@ static void prvCheckForValidListAndQueue( void )
  8021c38:	24018e68 	.word	0x24018e68
  8021c3c:	24018f18 	.word	0x24018f18
  8021c40:	24018e78 	.word	0x24018e78
- 8021c44:	08025e24 	.word	0x08025e24
+ 8021c44:	08025e14 	.word	0x08025e14
 
 08021c48 <__assert_func>:
  8021c48:	b51f      	push	{r0, r1, r2, r3, r4, lr}
@@ -74984,9 +74984,9 @@ static void prvCheckForValidListAndQueue( void )
  8021c70:	e7f4      	b.n	8021c5c <__assert_func+0x14>
  8021c72:	bf00      	nop
  8021c74:	240007b0 	.word	0x240007b0
- 8021c78:	08031fa3 	.word	0x08031fa3
- 8021c7c:	08031f75 	.word	0x08031f75
- 8021c80:	08031f68 	.word	0x08031f68
+ 8021c78:	08031f93 	.word	0x08031f93
+ 8021c7c:	08031f65 	.word	0x08031f65
+ 8021c80:	08031f58 	.word	0x08031f58
 
 08021c84 <atoi>:
  8021c84:	220a      	movs	r2, #10
@@ -75220,8 +75220,8 @@ static void prvCheckForValidListAndQueue( void )
  8021e80:	615a      	str	r2, [r3, #20]
  8021e82:	bd38      	pop	{r3, r4, r5, pc}
  8021e84:	240007b0 	.word	0x240007b0
- 8021e88:	08031fa4 	.word	0x08031fa4
- 8021e8c:	08031fbb 	.word	0x08031fbb
+ 8021e88:	08031f94 	.word	0x08031f94
+ 8021e8c:	08031fab 	.word	0x08031fab
  8021e90:	abcd330e 	.word	0xabcd330e
  8021e94:	e66d1234 	.word	0xe66d1234
  8021e98:	0005deec 	.word	0x0005deec
@@ -75326,7 +75326,7 @@ static void prvCheckForValidListAndQueue( void )
  8021f84:	d1f6      	bne.n	8021f74 <_strtol_l.constprop.0+0xd8>
  8021f86:	f8c8 1000 	str.w	r1, [r8]
  8021f8a:	e794      	b.n	8021eb6 <_strtol_l.constprop.0+0x1a>
- 8021f8c:	08032014 	.word	0x08032014
+ 8021f8c:	08032004 	.word	0x08032004
 
 08021f90 <strtol>:
  8021f90:	4613      	mov	r3, r2
@@ -75916,8 +75916,8 @@ static void prvCheckForValidListAndQueue( void )
  80224bc:	e8bd 41f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, lr}
  80224c0:	f000 b806 	b.w	80224d0 <__strtok_r>
  80224c4:	240007b0 	.word	0x240007b0
- 80224c8:	08031fa4 	.word	0x08031fa4
- 80224cc:	08032114 	.word	0x08032114
+ 80224c8:	08031f94 	.word	0x08031f94
+ 80224cc:	08032104 	.word	0x08032104
 
 080224d0 <__strtok_r>:
  80224d0:	b5f0      	push	{r4, r5, r6, r7, lr}
@@ -76172,10 +76172,10 @@ static void prvCheckForValidListAndQueue( void )
  80226e2:	4798      	blx	r3
  80226e4:	3601      	adds	r6, #1
  80226e6:	e7f2      	b.n	80226ce <__libc_init_array+0x1e>
- 80226e8:	080321ac 	.word	0x080321ac
- 80226ec:	080321ac 	.word	0x080321ac
- 80226f0:	080321ac 	.word	0x080321ac
- 80226f4:	080321b0 	.word	0x080321b0
+ 80226e8:	0803219c 	.word	0x0803219c
+ 80226ec:	0803219c 	.word	0x0803219c
+ 80226f0:	0803219c 	.word	0x0803219c
+ 80226f4:	080321a0 	.word	0x080321a0
 
 080226f8 <__retarget_lock_init_recursive>:
  80226f8:	4770      	bx	lr
@@ -76560,11 +76560,11 @@ static void prvCheckForValidListAndQueue( void )
  8022a60:	4638      	mov	r0, r7
  8022a62:	f000 f9bb 	bl	8022ddc <_printf_i>
  8022a66:	e7ed      	b.n	8022a44 <_svfiprintf_r+0x1c0>
- 8022a68:	0803216e 	.word	0x0803216e
- 8022a6c:	08032178 	.word	0x08032178
+ 8022a68:	0803215e 	.word	0x0803215e
+ 8022a6c:	08032168 	.word	0x08032168
  8022a70:	00000000 	.word	0x00000000
  8022a74:	080227cd 	.word	0x080227cd
- 8022a78:	08032174 	.word	0x08032174
+ 8022a78:	08032164 	.word	0x08032164
 
 08022a7c <__sfputc_r>:
  8022a7c:	6893      	ldr	r3, [r2, #8]
@@ -76830,11 +76830,11 @@ static void prvCheckForValidListAndQueue( void )
  8022ce4:	4630      	mov	r0, r6
  8022ce6:	f000 f879 	bl	8022ddc <_printf_i>
  8022cea:	e7e4      	b.n	8022cb6 <_vfiprintf_r+0x1e6>
- 8022cec:	0803216e 	.word	0x0803216e
- 8022cf0:	08032178 	.word	0x08032178
+ 8022cec:	0803215e 	.word	0x0803215e
+ 8022cf0:	08032168 	.word	0x08032168
  8022cf4:	00000000 	.word	0x00000000
  8022cf8:	08022aab 	.word	0x08022aab
- 8022cfc:	08032174 	.word	0x08032174
+ 8022cfc:	08032164 	.word	0x08032164
 
 08022d00 <_printf_common>:
  8022d00:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -77165,8 +77165,8 @@ static void prvCheckForValidListAndQueue( void )
  802300c:	f104 0619 	add.w	r6, r4, #25
  8023010:	e7f5      	b.n	8022ffe <_printf_i+0x222>
  8023012:	bf00      	nop
- 8023014:	0803217f 	.word	0x0803217f
- 8023018:	08032190 	.word	0x08032190
+ 8023014:	0803216f 	.word	0x0803216f
+ 8023018:	08032180 	.word	0x08032180
 
 0802301c <__sflush_r>:
  802301c:	f9b1 200c 	ldrsh.w	r2, [r1, #12]

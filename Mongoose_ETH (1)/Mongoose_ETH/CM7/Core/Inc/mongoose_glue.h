@@ -18,7 +18,7 @@ extern "C" {
 #define WIZARD_ENABLE_HTTP_UI_LOGIN 1
 
 #define WIZARD_ENABLE_MQTT 1
-#define WIZARD_MQTT_URL "mqtt://3.108.236.121:1883"
+#define WIZARD_MQTT_URL "192.168.1.171:1883"
 
 #define WIZARD_ENABLE_SNTP 1  // Enable time sync.
 #define WIZARD_SNTP_TYPE 0    // 0: default Google, 1: DHCP, 2: custom

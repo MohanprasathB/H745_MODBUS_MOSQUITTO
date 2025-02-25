@@ -63,7 +63,7 @@ static void timer_fn_all_topics(void *arg) {
 static void init_topics(void) {
   for (int i = 0; i < TOPIC_COUNT; i++) {
     mg_snprintf(s_topics[i].name, sizeof(s_topics[i].name),
-               "sarayu/d1/topic%d|m/", i + 1);
+               "sarayu%d", i + 1);
   }
 }
 
