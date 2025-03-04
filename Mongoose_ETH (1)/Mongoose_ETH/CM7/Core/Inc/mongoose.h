@@ -2235,13 +2235,6 @@ bool mg_wakeup_init(struct mg_mgr *);
 struct mg_timer *mg_timer_add(struct mg_mgr *mgr, uint64_t milliseconds,
                               unsigned flags, void (*fn)(void *), void *arg);
 
-
-
-
-
-
-
-
 struct mg_http_header {
   struct mg_str name;   // Header name
   struct mg_str value;  // Header value

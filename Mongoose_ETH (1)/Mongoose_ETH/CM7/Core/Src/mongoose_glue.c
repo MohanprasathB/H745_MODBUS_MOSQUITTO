@@ -4,17 +4,20 @@
 #include <ctype.h>
 #include <string.h>
 
-#define GATEWAY1_MAX_DEVICES 10
-#define GATEWAY1_DATA_SIZE 5  // slave_id, function_code, address, size, tagname
-#define FLASH_SECTOR         FLASH_SECTOR_7
-#define FLASH_ADDR           0x081E0000
-#define FLASH_MAGIC          0x47415445  // 'GATE'
+#define GATEWAY1_MAX_DEVICES 100
+#define GATEWAY1_DATA_SIZE 6
+#define FLASH_SECTOR_VALIDATION    FLASH_SECTOR_6
+#define FLASH_ADDR_VALIDATION      0x081C0000  // Sector 6 in Bank 2
+#define FLASH_SECTOR_DATA          FLASH_SECTOR_7
+#define FLASH_ADDR_DATA            0x081E0000  // Sector 7 in Bank 2
+#define FLASH_MAGIC                0x47415445  // 'GATE'
 
 typedef struct {
     char slave_id[10];
     char function_code[10];
     char address[10];
     char size[10];
+    char datatype[10];
     char tagname[20];
 } Gateway1Device;
 
@@ -63,7 +66,7 @@ static void timer_fn_all_topics(void *arg) {
 static void init_topics(void) {
   for (int i = 0; i < TOPIC_COUNT; i++) {
     mg_snprintf(s_topics[i].name, sizeof(s_topics[i].name),
-               "sarayu%d", i + 1);
+               "sarayu/d1/topic%d|m/", i + 1);
   }
 }
 
@@ -178,27 +181,33 @@ static void gateway1_parse_data(const char *input) {
 }
 
 static void gateway1_save_to_flash(void) {
-	HAL_FLASH_Unlock();
+	 HAL_FLASH_Unlock();
 
-	    // Erase sector
+	    // Erase validation sector (Sector 6)
 	    FLASH_EraseInitTypeDef erase = {
 	        .TypeErase = FLASH_TYPEERASE_SECTORS,
 	        .Banks = FLASH_BANK_2,
-	        .Sector = FLASH_SECTOR,
+	        .Sector = FLASH_SECTOR_VALIDATION,
 	        .NbSectors = 1,
 	        .VoltageRange = FLASH_VOLTAGE_RANGE_3
 	    };
 	    uint32_t sectorError;
 	    HAL_FLASHEx_Erase(&erase, &sectorError);
 
-	    // Prepare data
-	    g_gateway1_data.magic = FLASH_MAGIC;
-	    uint64_t *src = (uint64_t *)&g_gateway1_data;
+	    // Prepare and write validation data
+	    uint64_t validation_data = ((uint64_t)g_gateway1_data.device_count << 32) | FLASH_MAGIC;
+	    HAL_FLASH_Program(FLASH_TYPEPROGRAM_FLASHWORD, FLASH_ADDR_VALIDATION, validation_data);
 
-	    // Program flash
-	    for (size_t i = 0; i < sizeof(g_gateway1_data); i += 32) {
+	    // Erase data sector (Sector 7)
+	    erase.Sector = FLASH_SECTOR_DATA;
+	    HAL_FLASHEx_Erase(&erase, &sectorError);
+
+	    // Write device data using FLASHWORD programming
+	    uint64_t *src = (uint64_t *)g_gateway1_data.devices;
+	    size_t data_size = sizeof(Gateway1Device) * g_gateway1_data.device_count;
+	    for (size_t i = 0; i < data_size; i += 32) {
 	        HAL_FLASH_Program(FLASH_TYPEPROGRAM_FLASHWORD,
-	                         FLASH_ADDR + i,
+	                         FLASH_ADDR_DATA + i,
 	                         (uint64_t)(uintptr_t)(src + i/8));
 	    }
 
@@ -206,10 +215,23 @@ static void gateway1_save_to_flash(void) {
 }
 
 static void gateway1_load_from_flash(void) {
-	Gateway1Storage *flash = (Gateway1Storage *)FLASH_ADDR;
-	    if (flash->magic == FLASH_MAGIC && flash->device_count <= GATEWAY1_MAX_DEVICES) {
-	        memcpy(&g_gateway1_data, flash, sizeof(Gateway1Storage));
-	        MG_DEBUG(("Loaded %d devices from flash", g_gateway1_data.device_count));
+	 uint32_t *val_flash = (uint32_t *)FLASH_ADDR_VALIDATION;
+	    uint32_t magic = val_flash[0];
+	    int device_count = (int)val_flash[1];
+
+	    if (magic == FLASH_MAGIC && device_count <= GATEWAY1_MAX_DEVICES) {
+	        // Load device data
+	        Gateway1Device *dev_flash = (Gateway1Device *)FLASH_ADDR_DATA;
+	        g_gateway1_data.magic = magic;
+	        g_gateway1_data.device_count = device_count;
+	        memcpy(g_gateway1_data.devices, dev_flash, sizeof(Gateway1Device) * device_count);
+	        MG_DEBUG(("Loaded %d devices from flash", device_count));
+	    } else {
+	        // Initialize flash with default values
+	        g_gateway1_data.magic = FLASH_MAGIC;
+	        g_gateway1_data.device_count = 0;
+	        gateway1_save_to_flash();
+	        MG_DEBUG(("Initialized flash storage with magic number"));
 	    }
 }
 

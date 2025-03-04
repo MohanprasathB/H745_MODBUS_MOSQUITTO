@@ -666,7 +666,7 @@ void mongoose_init(void) {
 
 #if WIZARD_ENABLE_MQTT
   MG_INFO(("Starting MQTT reconnection timer"));
-  mg_timer_add(&g_mgr, 1000, MG_TIMER_REPEAT, mqtt_timer, &g_mgr);
+  mg_timer_add(&g_mgr, 1000, MG_TIMER_REPEAT, mqtt_timer, NULL);
 #endif
 
 #if WIZARD_ENABLE_MODBUS
